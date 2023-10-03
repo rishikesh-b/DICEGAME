@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
+  height: 100vh;
+  color: #333;
+  background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  position: relative;
+  width: 100rem;
+  height: 60rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
+  border-radius: 9px;
+  overflow: hidden;
+  display: flex;
+}
+
+.player {
+  flex: 50%;
+  padding: 9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.75s;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.1);
+}
+
+.name {
+  position: relative;
+  font-size: 4rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+.score {
+  font-size: 8rem;
+  font-weight: 300;
+  color: #c7365f;
+  margin-bottom: auto;
+}
+
+.player--active {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.player--active .name {
+  font-weight: 700;
+}
+
+.player--active .score {
+  font-weight: 400;
+}
+
+.current {
+  background-image: linear-gradient(-225deg, #FFFEFF 0%, #D7FFFE 100%);
+  opacity: 0.9;
+  border-radius: 9px;
+  color: #001F3F;
+  /* Deep navy blue color */
+  font-weight: 700;
+  /* Bold font for better visibility */
+  width: 65%;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.75s;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
+  transform: scale(1);
+}
+
+.current:hover {
+  background-image: linear-gradient(-225deg, #E5E5E5 0%, #C1E5E9 100%);
+  transform: scale(1.05);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+.current-label {
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #028482;
+  /* Rich Teal Color */
+}
+
+
+
+.current-score {
+  font-size: 3.5rem;
+}
+
+.btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #444;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-family: inherit;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 400;
+  transition: all 0.2s;
+  backdrop-filter: blur(10px);
+  padding: 0.7rem 2.5rem;
+  border-radius: 50rem;
+  box-shadow: 0 2.5rem 5rem rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #333;
+  transform: translateX(-50%) scale(1.05);
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(-50%) scale(0.95);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn::first-letter {
+  font-size: 2.4rem;
+  display: inline-block;
+  margin-right: 0.7rem;
+}
+
+.btn--new {
+  top: 4rem;
+}
+
+.btn--roll {
+  top: 39.3rem;
+}
+
+.btn--hold {
+  top: 46.1rem;
+}
+
+.dice {
+  position: absolute;
+  left: 50%;
+  top: 16.5rem;
+  transform: translateX(-50%);
+  height: 10rem;
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
+}
+
+.player--winner {
+  background-color: #2f2f2f;
+}
+
+.player--winner .name {
+  font-weight: 700;
+  color: #c7365f;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes rollDice {
+  0% {
+    transform: translateX(-50%) rotateX(0deg) rotateY(0deg);
+  }
+
+  25% {
+    transform: translateX(-50%) rotateX(180deg) rotateY(0deg);
+  }
+
+  50% {
+    transform: translateX(-50%) rotateX(180deg) rotateY(180deg);
+  }
+
+  75% {
+    transform: translateX(-50%) rotateX(360deg) rotateY(180deg);
+  }
+
+  100% {
+    transform: translateX(-50%) rotateX(360deg) rotateY(360deg);
+  }
+}
+
+.dice {
+  /* ... your existing styles ... */
+  transition: transform 0.5s ease-in-out;
+}
+
+.dice:hover {
+  animation: rollDice 2s ease-in-out forwards;
+}
+
+@keyframes rollDice {
+  0% {
+    transform: translateX(-50%) rotateX(0deg) rotateY(0deg);
+  }
+
+  25% {
+    transform: translateX(-50%) rotateX(180deg) rotateY(0deg);
+  }
+
+  50% {
+    transform: translateX(-50%) rotateX(180deg) rotateY(180deg);
+  }
+
+  75% {
+    transform: translateX(-50%) rotateX(360deg) rotateY(180deg);
+  }
+
+  100% {
+    transform: translateX(-50%) rotateX(360deg) rotateY(360deg);
+  }
+}
